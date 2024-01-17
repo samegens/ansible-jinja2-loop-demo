@@ -1,0 +1,21 @@
+---
+- name: Test partial array overrides
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    error_codes:
+      - nr: 9
+        msg: Identifier from lib could not be found
+      - nr: 7
+        msg: Image could not be converted
+      - nr: 125
+        msg: Image size too big
+
+  tasks:
+    - name: Copy template
+      ansible.builtin.template:
+        src: demo.yml.j2
+        dest: /tmp/demo.yml
+        mode: "0644"

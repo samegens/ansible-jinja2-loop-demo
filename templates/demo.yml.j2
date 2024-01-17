@@ -1,0 +1,6 @@
+[ErrorCodes]
+NumberOfErrorCodes   = {{ error_codes | length }}
+{% for error_code in error_codes %}
+ErrorCodeNumber{{ '%02d' | format(loop.index) }}    = {{ error_code.nr }}
+ErrorCodeMessage{{ '%02d' | format(loop.index) }}   = {{ error_code.msg }}
+{% endfor %}
